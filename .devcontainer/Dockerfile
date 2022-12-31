@@ -3,7 +3,7 @@ ARG PULUMI_VERSION=latest
 
 # --------------------------------------------------------------------------------
 
-FROM Debian:buster-slim AS builder
+FROM debian:buster-slim AS builder
 RUN apt-get update -y && \
     apt-get upgrade -y && \
     apt-get install -y \
@@ -11,6 +11,9 @@ RUN apt-get update -y && \
     build-essential \
     git
 
+RUN apt-get update && apt-get -y install --no-install-recommends awscli
+ENV TZ=Europe/Stockholm
+RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
 RUN if [ "$PULUMI_VERSION" = "latest" ]; then \
     curl -fsSL https://get.pulumi.com/ | bash; \

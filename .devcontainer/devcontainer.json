@@ -23,7 +23,11 @@
         ]
     },
     "extensions": [
-        "ms-python.python"
+        "ms-python.python",
+        "amazonwebservices.aws-toolkit-vscode"
+    ],
+    "mounts": [
+        "source=${env:HOME}${env:USERPROFILE}/.aws,target=/root/.aws,type=bind"
     ],
     "runArgs": [
         "--init"
