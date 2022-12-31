@@ -1,0 +1,32 @@
+{
+    "name": "Python",
+    "build": {
+        "dockerfile": "Dockerfile",
+        "args": {
+            "PYTHON_VERSION": "3.9",
+            "PULUMI_VERSION": "latest"
+  
+        }
+    },
+    "features": {
+        "azure-clip": "latest"
+    },
+    "settings": {
+        "python.analysis.extraPaths":[],
+        "python.analysis.diagnosticSeverityOverrides": {
+            "reportShadowedImports": "none",
+            "reportMissingImports": "none"
+        },
+        "python.linting.pylintArgs": [
+            "--init-hook",
+            "import sys; sys.path.append('venv/lib/python3.9/site-packages)"
+        ]
+    },
+    "extensions": [
+        "ms-python.python"
+    ],
+    "runArgs": [
+        "--init"
+    ],
+    "remoteUser": "vscode"
+}
